@@ -170,13 +170,13 @@ class EventController extends Controller
                     $user->save();
                     // file_put_contents($tokenPath, json_encode($accessToken));
                     $client->setAccessToken($accessToken);
-                    return redirect(route('admin.events.add'));
+                    return redirect(route('events.add'));
                 } 
                 
                 if( !$request->user()->token) {
                     echo "<a href='".$client->createAuthUrl()."'>Google Login</a>";
                 } else {
-                    return redirect(route('admin.events.add'));
+                    return redirect(route('events.add'));
                 }
                 
             }
@@ -210,13 +210,13 @@ class EventController extends Controller
                     $user->save();
                     // file_put_contents($tokenPath, json_encode($accessToken));
                     $client->setAccessToken($accessToken);
-                    redirect(route('admin.events.add'));
+                    redirect(route('events.add'));
                 } 
 
                 if( !$request->user()->token) {
                     echo "<a href='".$client->createAuthUrl()."'>Google Login</a>";
                 } else {
-                    redirect(route('admin.events.add'));
+                    redirect(route('events.add'));
                 }
                 
             }
