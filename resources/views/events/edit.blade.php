@@ -80,7 +80,29 @@
                     @else
                         <p>Please create token first by accessing this <a href="{{ route('admin.get-token') }}">link</a>.</p>
                     @endif
-                    
+                    <div class="table-responsive pt-4">
+                        <h5>Attendees</h5>
+                        <table class="table table-hover table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#</td>
+                                    <td>{{ Auth::user()->email }}</td>
+                                </tr>
+                                @foreach( $event->attendees as $att )
+                                <tr>
+                                    <td>#</td>
+                                    <td>{{ $att->email }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

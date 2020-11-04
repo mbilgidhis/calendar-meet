@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'id' => Str::uuid(),
             'name' => 'Andi Baskoro',
             'email' => 'baskoro.ruliawan@gmail.com',
-            'password' => Hash::make('iosaphat007'),
+            'password' => Hash::make(config('app.default_password')),
         ]);
     }
 }

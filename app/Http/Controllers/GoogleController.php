@@ -40,7 +40,7 @@ class GoogleController extends Controller
                         'email' => $user->email,
                         'name' => $user->name,
                         'google_id' => $user->id,
-                        'password' => Hash::make('password123'),
+                        'password' => Hash::make(config('app.default_password')),
                     ]);
     
                     Auth::login($newUser);

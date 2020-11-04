@@ -53,7 +53,7 @@ class FormController extends Controller
                     'updated_at' => \Carbon\Carbon::now()
                 ]);
                 // $att->save();
-                return redirect(route('form', ['id' => $event->id, 'eventid' => $eventid]));
+                return redirect(route('form', ['id' => $event->id, 'eventid' => $eventid]))->with(['success' => 'Please wait for invitation email.']);
             }
         }
     }

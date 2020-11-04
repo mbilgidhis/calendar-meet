@@ -228,5 +228,5 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
-
+    'default_password' => env('DEFAULT_PASSWORD'),
 ];

@@ -86,8 +86,9 @@ class EventController extends Controller
     }
 
     public function edit(Request $request, $id) {
-        $event = Event::with('user')->where('id', $id)->where('user_id', $request->user()->id)->first();
+        $event = Event::with('user', 'attendees')->where('id', $id)->where('user_id', $request->user()->id)->first();
         $data['event'] = $event;
+        $data['attendees'] = \App\Attendee::where('event_id', $id)->get();
         if( $event )
             return view('events/edit', $data);
         else
