@@ -28,7 +28,7 @@ class EventController extends Controller
     }
 
     public function save(Request $request) {
-        return $request->all();
+        // return $request->all();
         $request->validate([
             'name' => 'required|string|max:50',
             'description' => 'nullable|string|max:150',
