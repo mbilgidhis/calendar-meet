@@ -19,7 +19,7 @@ class EventController extends Controller
     }
 
     public function index(Request $request) {
-        $data['events'] = Event::with('user')->orderBy('start_at', 'asc')->paginate(10);
+        $data['events'] = Event::with('user')->where('user_id', $request->user()->id)->orderBy('start_at', 'asc')->paginate(10);
         return view('events/index', $data);
     }
 
