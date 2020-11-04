@@ -48,6 +48,17 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <div class="col-sm-6 offset-sm-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="active" id="remember" {{ ($event->active == 1) ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="active">
+                                        Active
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="event_link" class="col-sm-2 col-form-label">Event Link</label>
                             <div class="col-sm-10">
                                 <input type="text" name="event_link" id="name" class="form-control" placeholder="Meet Link" value="{{ $event->event_link }}"  readonly autocomplete="off">

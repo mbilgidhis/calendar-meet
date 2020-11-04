@@ -111,6 +111,7 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->start_at = $request->start;
         $event->end_at = $request->end;
+        $event->active = ( $request->active == 'on' ) ? 1 : 0;
 
         $start = Carbon::createFromFormat('Y-m-d H:i:s', $request->start);
         $end = Carbon::createFromFormat('Y-m-d H:i:s', $request->end);
