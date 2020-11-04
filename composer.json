@@ -14,6 +14,7 @@
         "goldspecdigital/laravel-eloquent-uuid": "7.0",
         "google/apiclient": "^2.7",
         "guzzlehttp/guzzle": "^7.2",
+        "josiasmontag/laravel-recaptchav3": "^0.6.0",
         "laravel/framework": "^7.0",
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",

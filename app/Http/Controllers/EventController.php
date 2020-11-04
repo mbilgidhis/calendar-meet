@@ -19,7 +19,7 @@ class EventController extends Controller
     }
 
     public function index(Request $request) {
-        $data['events'] = Event::with('user')->paginate(10);
+        $data['events'] = Event::with('user')->orderBy('start_at', 'asc')->paginate(10);
         return view('events/index', $data);
     }
 
@@ -28,6 +28,14 @@ class EventController extends Controller
     }
 
     public function save(Request $request) {
+        return $request->all();
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'description' => 'nullable|string|max:150',
+            'start' => 'required|date|date_format:Y-m-d H:i:s',
+            'end' => 'required|date|date_format:Y-m-d H:i:s|after:start_at',
+            'g-recaptcha-response' => 'required|recaptchav3:add,0.5'
+        ]);
         $event = new Event();
         $event->id = Str::uuid();
         $event->name = $request->name;
@@ -87,6 +95,16 @@ class EventController extends Controller
     }
 
     public function update( Request $request ) {
+        // return $request->all();
+        $request->validate([
+            'id' => 'required|string|uuid',
+            'name' => 'required|string|max:50',
+            'description' => 'nullable|string|max:150',
+            'start' => 'required|date|date_format:Y-m-d H:i:s',
+            'end' => 'required|date|date_format:Y-m-d H:i:s|after:start',
+            'g-recaptcha-response' => 'required|recaptchav3:update,0.5'
+        ]);
+
         $event = Event::where('id', $request->id)->where('user_id', $request->user()->id)->first();
 
         $event->name = $request->name;

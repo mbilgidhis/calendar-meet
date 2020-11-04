@@ -26,13 +26,15 @@
 <script src="{{ url('js/jquery.simple-calendar.min.js') }}"></script>
 <script>
     $(document).ready(function(){
+        var ev = JSON.parse('@php echo json_encode($events) @endphp');
         $("#calendar").simpleCalendar({
             displayEvent: true,
-            events: [{
-                startDate:new Date(new Date().setHours(new Date().getHours() + 24)).toDateString(),
-                endDate:new Date(new Date().setHours(new Date().getHours() + 25)).toISOString(),
-                summary:'Visit of the Eiffel Tower'
-            }]
+            // events: [{
+            //     startDate:new Date(new Date().setHours(new Date().getHours() + 24)).toDateString(),
+            //     endDate:new Date(new Date().setHours(new Date().getHours() + 25)).toISOString(),
+            //     summary:'Visit of the Eiffel Tower'
+            // }]
+            events: ev
         });
     });
 </script>

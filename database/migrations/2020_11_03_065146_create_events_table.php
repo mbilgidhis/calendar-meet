@@ -21,6 +21,7 @@ class CreateEventsTable extends Migration
             $table->string('description', 150);
             $table->dateTime('start_at');
             $table->dateTime('end_at');
+            $table->boolean('active')->default(1);
             $table->string('event_id', 30)->nullable();
             $table->string('event_link', 255)->nullable();
             $table->string('meet_link', 50)->nullable();

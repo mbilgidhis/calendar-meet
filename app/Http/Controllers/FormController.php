@@ -12,7 +12,7 @@ class FormController extends Controller
     }
 
     public function index(Request $request, $id, $eventid) {
-        $event = \App\Event::with('user')->where('id', $id)->where('event_id', $eventid)->first();
+        $event = \App\Event::with('attendees')->where('id', $id)->where('event_id', $eventid)->first();
         $data['event'] = $event;
         if ($event)
             return view('form.index', $data);
@@ -25,6 +25,13 @@ class FormController extends Controller
         if( !$event )
             abort(404);
         else {
+            if( $event->active == 0 )
+                return redirect()->back();
+            $request->validate([
+                'email' => 'required|email:rfc,dns|max:50',
+                'g-recaptcha-response' => 'required|recaptchav3:join,0.5'
+            ]);
+
             $client = $this->getClient($event);
             $service = new \Google_Service_Calendar($client);
 

@@ -8,6 +8,7 @@
                 <div class="card-header">Event List</div>
 
                 <div class="card-body table-reponsive">
+                    @include('layouts.flash')
                     <table class="table table-hover table-stripped">
                         <thead>
                             <tr class="text-center">
@@ -24,8 +25,8 @@
                         @foreach( $events as $event)
                             <tr>
                                 <td>{{ $event->name }}</td>
-                                <td>{{ $event->start_at }}</td>
-                                <td>{{ $event->end_at }}</td>
+                                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $event->start_at)->format('D, d M Y H:i') }}</td>
+                                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $event->end_at)->format('D, d M Y H:i') }}</td>
                                 <td><a href="{{ $event->event_link }}" target="_blank" class="btn btn-primary btn-sm">Open</a></td>
                                 <td><a href="{{ $event->meet_link }}" target="_blank" class="btn btn-primary btn-sm">Open</a></td>
                                 <td><a href="{{ route('form', [ 'id' => $event->id, 'eventid' => $event->event_id]) }}" target="_blank" class="btn btn-primary btn-sm">Link</a></td>

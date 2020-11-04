@@ -21,8 +21,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $events = \App\Event::where('user_id', $request->user()->id)->where('created_at', '>=', \Carbon\Carbon::now()->subDays(60))->get();
+        $evs = array();
+        foreach ($events as $event) {
+            $temp = array();
+            $temp['startDate'] = $event->start_at;
+            $temp['endDate'] = $event->end_at;
+            $temp['summary'] = $event->name;
+            array_push($evs, $temp);
+        }
+
+        $data['events'] = $evs;
+        return view('home', $data);
     }
 }

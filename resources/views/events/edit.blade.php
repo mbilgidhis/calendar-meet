@@ -8,6 +8,7 @@
                 <div class="card-header">Edit Event</div>
 
                 <div class="card-body">
+                    @include('layouts.flash')
                     @if( Auth::user()->token )
                     <form action="{{ route('events.update') }}" method="post">
                         @csrf
@@ -60,6 +61,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="offset-sm-9 col-sm-3 text-right">
+                                {!! RecaptchaV3::field('update') !!}
                                 <button type="submit" class="btn btn-success btn-sm">Update</button>
                             </div>
                         </div>
@@ -104,5 +106,6 @@
 @endpush
 
 @push('styles')
+{!! RecaptchaV3::initJs() !!}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-PMjWzHVtwxdq7m7GIxBot5vdxUY+5aKP9wpKtvnNBZrVv1srI8tU6xvFMzG8crLNcMj/8Xl/WWmo/oAP/40p1g==" crossorigin="anonymous" />
 @endpush
