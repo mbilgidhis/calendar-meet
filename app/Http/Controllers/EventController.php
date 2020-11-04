@@ -19,7 +19,7 @@ class EventController extends Controller
     }
 
     public function index(Request $request) {
-        $data['events'] = Event::with('user')->where('user_id', $request->user()->id)->orderBy('start_at', 'asc')->paginate(10);
+        $data['events'] = Event::with('user', 'attendees')->where('user_id', $request->user()->id)->orderBy('start_at', 'asc')->paginate(10);
         return view('events/index', $data);
     }
 
@@ -140,6 +140,20 @@ class EventController extends Controller
         $gEvent = $service->events->patch($calendarId, $event->event_id, $gEvent);
         if( $gEvent ) {
             $event->save();
+            return redirect(route('events.list'));
+        }
+    }
+
+    public function delete( Request $request, $id ) {
+        $event = Event::findOrFail($id);
+
+        $client = $this->getClient($request);
+        $service = new \Google_Service_Calendar($client);
+        $calendarId = 'primary';
+
+        $gEvent = $service->events->delete($calendarId, $event->event_id);
+        if( $gEvent ) {
+            $event->delete();
             return redirect(route('events.list'));
         }
     }

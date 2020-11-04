@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/events/save', 'EventController@save')->name('events.save');
     Route::get('/events/edit/{id}', 'EventController@edit')->name('events.edit');
     Route::post('/events/update', 'EventController@update')->name('events.update');
+    Route::post('/events/delete/{id}', 'EventController@delete')->name('events.delete');
     Route::get('/get-token', 'EventController@getToken')->name('get-token');
 
 });

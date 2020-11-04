@@ -31,7 +31,16 @@
                                     <td><a href="{{ $event->event_link }}" target="_blank" class="btn btn-primary btn-sm">Open</a></td>
                                     <td><a href="{{ $event->meet_link }}" target="_blank" class="btn btn-primary btn-sm">Open</a></td>
                                     <td><a href="{{ route('form', [ 'id' => $event->id, 'eventid' => $event->event_id]) }}" target="_blank" class="btn btn-primary btn-sm">Link</a></td>
-                                    <td><a href="{{ route('events.edit', [ 'id' => $event->id]) }}" class="btn btn-warning btn-sm">Edit</a></td>
+                                    <td>
+                                        <a href="{{ route('events.edit', [ 'id' => $event->id]) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        
+                                        <form action="{{ route('events.delete', ['id' => $event->id]) }}" method="post" style="display: inline" class="delete">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $event->id }}">
+                                            <button class="btn btn-sm btn-danger" type="submit"> Delete</button>
+                                        </form>
+                                        
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -44,3 +53,14 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function(){
+        $('.delete').on('submit', function(data){
+            var c = confirm('Are you sure to delete this event?');
+            return c;
+        });
+    })
+</script>
+@endpush

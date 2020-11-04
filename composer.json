@@ -16,7 +16,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "josiasmontag/laravel-recaptchav3": "^0.6.0",
         "laravel/framework": "^7.0",
-        "laravel/socialite": "^5.0",
+        "laravel/socialite": "5.0.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4"
     },
