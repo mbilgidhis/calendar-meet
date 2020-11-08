@@ -13,7 +13,7 @@
     <meta property="og:description" content="{{ $event->description }}">
     <meta property="og:image" content="{{ url('calendar.png') }}">
     <meta property="og:site_name" content="Calendar">
-    <meta property="og:url" content="{{ secure_url()->current() }}">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:locale" content="id_ID">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@jenggota">
@@ -22,7 +22,7 @@
     <meta name="twitter:image" content="{{ url('calendar.png') }}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="icon" href="{{ secure_asset('calendar.png') }}" type="image/png" 
+    <link rel="icon" href="{{ url('calendar.png') }}" type="image/png" 
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <!-- Styles -->
