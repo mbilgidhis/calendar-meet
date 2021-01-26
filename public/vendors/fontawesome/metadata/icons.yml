@@ -1,0 +1,21 @@
+ellipsis-v-alt:
+  changes:
+    - 5.0.0
+  label: Alternate Vertical Ellipsis
+  search:
+    terms:
+      - dots
+      - drag
+      - kebab
+      - list
+      - menu
+      - nav
+      - navigation
+      - ol
+      - reorder
+      - settings
+      - ul
+  styles:
+    - light
+  unicode: f39c
+  voted: false

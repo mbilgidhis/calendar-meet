@@ -39,7 +39,7 @@
                                     <td>
                                         <div class="btn-group-sm" role="group" style="display: inline" title="Action">
                                             <button id="groupAction" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fal fa-download"></i>
+                                                <i class="fal fa-ellipsis-v-alt"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="groupAction">
                                                 <a href="{{ route('events.edit', [ 'id' => $event->id]) }}" class="dropdown-item">Edit</a>
@@ -84,4 +84,9 @@
         });
     })
 </script>
+@endpush
+
+@push('styles')
+    <link rel="stylesheet" href="{{ assets('/vendors/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ assets('/vendors/fontawesome/css/light.min.css') }}">
 @endpush
