@@ -87,6 +87,6 @@
 @endpush
 
 @push('styles')
-    <link rel="stylesheet" href="{{ assets('/vendors/fontawesome/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ assets('/vendors/fontawesome/css/light.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/vendors/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/vendors/fontawesome/css/light.min.css') }}">
 @endpush
