@@ -19,7 +19,9 @@ class EventController extends Controller
     }
 
     public function index(Request $request) {
-        $data['events'] = Event::with('user', 'attendees')->where('user_id', $request->user()->id)->orderBy('start_at', 'asc')->paginate(10);
+        $page =  ( (int)$request->query('page') ) ? (int)$request->query('page') : 1;
+        $data['events'] = Event::with('user', 'attendees')->where('user_id', $request->user()->id)->orderBy('start_at', 'desc')->paginate(10);
+        $data['page'] = $page;
         return view('events/index', $data);
     }
 

@@ -13,6 +13,7 @@
                         <table class="table table-hover table-stripped">
                             <thead>
                                 <tr class="text-center">
+                                    <th>No</th>
                                     <th>Event Name</th>
                                     <th>Start</th>
                                     <th>End</th>
@@ -24,7 +25,11 @@
                             </thead>
                             <tbody>
                             @foreach( $events as $event)
+                                @php
+                                    $no = $page;
+                                @endphp
                                 <tr>
+                                    <td>{{ $no }}</td>
                                     <td>{{ $event->name }}</td>
                                     <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $event->start_at)->format('D, d M Y H:i') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $event->end_at)->format('D, d M Y H:i') }}</td>
@@ -42,6 +47,9 @@
                                         
                                     </td>
                                 </tr>
+                                @php
+                                    $no++;
+                                @endphp
                             @endforeach
                             </tbody>
                         </table>
