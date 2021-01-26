@@ -20,7 +20,7 @@
                                     <th>Event Link</th>
                                     <th>Meet Link</th>
                                     <th>Form Link</th>
-                                    <th></th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,13 +37,26 @@
                                     <td><a href="{{ $event->meet_link }}" target="_blank" class="btn btn-primary btn-sm">Open</a></td>
                                     <td><a href="{{ route('form', [ 'id' => $event->id, 'eventid' => $event->event_id]) }}" target="_blank" class="btn btn-primary btn-sm">Link</a></td>
                                     <td>
-                                        <a href="{{ route('events.edit', [ 'id' => $event->id]) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <div class="btn-group-sm" role="group" style="display: inline" title="Action">
+                                            <button id="groupAction" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fal fa-download"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="groupAction">
+                                                <a href="{{ route('events.edit', [ 'id' => $event->id]) }}" class="dropdown-item">Edit</a>
+                                                <form action="{{ route('events.delete', ['id' => $event->id]) }}" method="post" style="display: inline" class="delete">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $event->id }}">
+                                                    <button class="dropdown-item" type="submit"> Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        {{-- <a href="{{ route('events.edit', [ 'id' => $event->id]) }}" class="btn btn-warning btn-sm">Edit</a>
                                         
                                         <form action="{{ route('events.delete', ['id' => $event->id]) }}" method="post" style="display: inline" class="delete">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $event->id }}">
                                             <button class="btn btn-sm btn-danger" type="submit"> Delete</button>
-                                        </form>
+                                        </form> --}}
                                         
                                     </td>
                                 </tr>
