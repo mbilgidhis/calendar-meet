@@ -24,10 +24,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach( $events as $event)
                                 @php
-                                    $no = $page;
+                                    $no = ( ($page - 1) * $perpage ) + 1;
                                 @endphp
+                            @foreach( $events as $event)
                                 <tr>
                                     <td>{{ $no }}</td>
                                     <td>{{ $event->name }}</td>

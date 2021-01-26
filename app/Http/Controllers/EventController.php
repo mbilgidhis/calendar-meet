@@ -19,9 +19,11 @@ class EventController extends Controller
     }
 
     public function index(Request $request) {
+        $perpage = 10;
         $page =  ( (int)$request->query('page') ) ? (int)$request->query('page') : 1;
-        $data['events'] = Event::with('user', 'attendees')->where('user_id', $request->user()->id)->orderBy('start_at', 'desc')->paginate(10);
+        $data['events'] = Event::with('user', 'attendees')->where('user_id', $request->user()->id)->orderBy('start_at', 'desc')->paginate($perpage);
         $data['page'] = $page;
+        $data['perpage'] = $perpage;
         return view('events/index', $data);
     }
 
