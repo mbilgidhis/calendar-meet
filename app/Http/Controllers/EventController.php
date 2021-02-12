@@ -37,7 +37,7 @@ class EventController extends Controller
             'name' => 'required|string|max:50',
             'description' => 'nullable|string|max:150',
             'start' => 'required|date|date_format:Y-m-d H:i:s',
-            'end' => 'required|date|date_format:Y-m-d H:i:s|after:start_at',
+            'end' => 'required|date|date_format:Y-m-d H:i:s|after:start',
             'g-recaptcha-response' => 'required|recaptchav3:add,0.5'
         ]);
         $event = new Event();

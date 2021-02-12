@@ -32,6 +32,11 @@ class FormController extends Controller
                 'g-recaptcha-response' => 'required|recaptchav3:join,0.5'
             ]);
 
+            $check = \App\Attendee::where('email', strtolower($request->email))->where('event_id', $event->id)->get();
+
+            if( count($check) > 0 )
+                return redirect(route('form', ['id' => $event->id, 'eventid' => $eventid]))->with(['fail' => 'You\'ve already registered.']);
+
             $client = $this->getClient($event);
             $service = new \Google_Service_Calendar($client);
 
@@ -39,7 +44,7 @@ class FormController extends Controller
 
             $gEvent = $service->events->get($calendarId, $eventid);
             $attendees = $gEvent->getAttendees();
-            $additional = new \Google_Service_Calendar_EventAttendee(['email' => $request->email]);
+            $additional = new \Google_Service_Calendar_EventAttendee(['email' => strtolower($request->email)]);
             array_push($attendees, $additional);
             $gEvent->setAttendees($attendees);
             $gEventUpdate = $service->events->patch($calendarId, $eventid, $gEvent, ['conferenceDataVersion' => 1, 'sendNotifications' => true]);
@@ -47,7 +52,7 @@ class FormController extends Controller
             if( $gEventUpdate ) {
                 $att = \App\Attendee::insert([
                     'id' => Str::uuid(),
-                    'email' => $request->email,
+                    'email' => strtolower($request->email),
                     'event_id' => $event->id,
                     'created_at' => \Carbon\Carbon::now(),
                     'updated_at' => \Carbon\Carbon::now()
