@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('login');
-});
+Route::get('/', 'Api\AuthRouteApi@login');
 
 Auth::routes(['register' => config('auth.register_status')]);
 
