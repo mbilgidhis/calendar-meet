@@ -17,7 +17,7 @@ class CreateSessionsTable extends Migration
             $table->string('id')->unique();
             $table->foreignId('user_id')->nullable();
             $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
+            $table->text('user_agent', 255)->nullable();
             $table->text('payload');
             $table->integer('last_activity');
         });
