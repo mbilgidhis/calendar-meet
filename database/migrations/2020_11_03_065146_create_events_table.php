@@ -18,7 +18,7 @@ class CreateEventsTable extends Migration
             $table->collation = 'utf8mb4_general_ci';
             $table->uuid('id')->primary();
             $table->string('name', 50);
-            $table->string('description', 150);
+            $table->string('description', 150)->nullable();
             $table->dateTime('start_at');
             $table->dateTime('end_at');
             $table->boolean('active')->default(1);

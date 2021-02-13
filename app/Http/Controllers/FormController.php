@@ -32,6 +32,9 @@ class FormController extends Controller
                 'g-recaptcha-response' => 'required|recaptchav3:join,0.5'
             ]);
 
+            if ( strtolower($request->email) == strtolower($event->user->email) )
+                return redirect(route('form', ['id' => $event->id, 'eventid' => $eventid]))->with(['fail' => 'You\'re automatically  registered.']);
+
             $check = \App\Attendee::where('email', strtolower($request->email))->where('event_id', $event->id)->get();
 
             if( count($check) > 0 )
