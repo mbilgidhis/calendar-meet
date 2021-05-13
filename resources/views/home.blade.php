@@ -28,6 +28,8 @@
     $(document).ready(function(){
         var ev = JSON.parse('@php echo json_encode($events) @endphp');
         $("#calendar").simpleCalendar({
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
             displayEvent: true,
             // events: [{
             //     startDate:new Date(new Date().setHours(new Date().getHours() + 24)).toDateString(),
