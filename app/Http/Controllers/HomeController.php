@@ -29,7 +29,7 @@ class HomeController extends Controller
             $temp = array();
             $temp['startDate'] = $event->start_at;
             $temp['endDate'] = $event->end_at;
-            $temp['summary'] = $event->name;
+            $temp['summary'] = $event->name . ": " . $event->meet_link;
             array_push($evs, $temp);
         }
 

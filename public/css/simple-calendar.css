@@ -1,7 +1,6 @@
 .calendar {
   position: relative;
   overflow: hidden;
-  text-transform: capitalize;
   text-align: center;
   font: 15px/1em inherit;
   color: #545A5C; }
