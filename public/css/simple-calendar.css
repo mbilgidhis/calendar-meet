@@ -79,11 +79,11 @@
       content: '';
       position: absolute;
       top: calc(50% + .6em);
-      left: calc(50% - 2px);
-      width: 4px;
-      height: 4px;
+      left: calc(50% - 5px);
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: #6691CC; }
+      background: #6677cc; }
     .calendar .day.disabled {
       cursor: default; }
       .calendar .day.disabled:hover {
